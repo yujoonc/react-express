@@ -1,18 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { filter } from '../actions';
+import { searchText } from '../actions';
 
 class SearchBar extends React.Component {
     constructor(props) {
         super(props);
-        this.handleChange = this.handleChange.bind(this);
+
+        this.onChangeFilterText = this.onChangeFilterText.bind(this);
+        this.onChangeFilterInStock = this.onChangeFilterInStock.bind(this);
     }
 
-    handleChange() {
-        this.props.onUserInput(
-            this.filterTextInput.value,
-            this.inStockOnlyInput.checked
-        );
+    onChangeFilterText(e) {
+        this.props.onChangeFilter(e.target.value, this.props.inStockOnly);
+    }
+
+    onChangeFilterInStock(e) {
+        this.props.onChangeFilter(this.props.searchText, !this.props.inStockOnly);
     }
 
     render() {
@@ -21,16 +24,14 @@ class SearchBar extends React.Component {
                 <input
                     type="text"
                     placeholder="Search..."
-                    value={this.props.filterText}
-                    ref={(input) => this.filterTextInput = input}
-                    onChange={this.handleChange}
+                    value={this.props.searchText}
+                    onChange={this.onChangeFilterText}
                 />
                 <p>
                     <input
                         type="checkbox"
                         checked={this.props.inStockOnly}
-                        ref={(input) => this.inStockOnlyInput = input}
-                        onChange={this.handleChange}
+                        onChange={this.onChangeFilterInStock}
                     />
                     {' '}
                     Only show products in stock
@@ -40,18 +41,19 @@ class SearchBar extends React.Component {
     }
 }
 
-/*let mapStateToProps = (state) => {
+let mapStateToProps = (state) => {
     return {
-        searchText: state.search.searchText
+        searchText: state.products.searchText,
+        inStockOnly: state.products.inStockOnly
     };
 };
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        onFilter: (searchText) => dispatch(filter(searchText))
+        onChangeFilter: (filterText, inStockOnly) => dispatch(searchText(filterText,inStockOnly))
     }
 };
 
-SearchBar = connect(mapStateToProps, mapDispatchToProps)(SearchBar);*/
+SearchBar = connect(mapStateToProps, mapDispatchToProps)(SearchBar);
 
 export default SearchBar;

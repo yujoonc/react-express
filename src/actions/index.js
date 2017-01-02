@@ -1,5 +1,6 @@
 
-export const FILTER = 'FILTER';
+export const SEARCH_TEXT = 'SEARCH_TEXT';
+export const CHECKOUT = 'CHECKOUT';
 
 /*export function increment() {
     return {
@@ -13,9 +14,17 @@ export function decrement() {
     };
 }*/
 
-export function filter(value) {
+export function searchText(text, inStockOnly) {
     return {
-        type: FILTER,
-        searchText: value
+        type: SEARCH_TEXT,
+        searchText: text,
+        inStockOnly: inStockOnly
+    };
+}
+
+export function checkout(paymentAmount) {
+    return {
+        type: CHECKOUT,
+        paymentAmount: paymentAmount
     };
 }
