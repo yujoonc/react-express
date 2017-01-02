@@ -113,6 +113,7 @@ UpgradeLog*.XML
 .tmp
 .gulp-cache
 dist
+build
 node_modules/
 documents/
 npm-debug.log*

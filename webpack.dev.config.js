@@ -2,22 +2,20 @@ var webpack = require('webpack');
 
 module.exports = {
 
-    entry: {
-        dev: [
-            './src/index.js',
-            'webpack-dev-server/client?http://0.0.0.0:3001',
-            'webpack/hot/only-dev-server'
-        ]
-    },
+    entry: [
+        './src/index.js',
+        'webpack-dev-server/client?http://0.0.0.0:3001',
+        'webpack/hot/only-dev-server'
+    ],
 
     output: {
         path: '/',
-        filename: '[name].bundle.js'
+        filename: 'bundle.js'
     },
 
     devServer: {
         hot: true,
-        filename: 'dev.bundle.js',
+        filename: 'bundle.js',
         publicPath: '/',
         historyApiFallback: true,
         contentBase: './public',
