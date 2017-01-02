@@ -8,7 +8,7 @@ export default class ProductTable extends React.Component {
     render() {
         var rows = [];
         var lastCategory = null;
-        this.props.filteredProductList.forEach((product) => {
+        this.props.products.forEach((product) => {
             if (product.name.indexOf(this.props.filterText) === -1 || (!product.stocked && this.props.inStockOnly)) {
                 return;
             }
@@ -32,13 +32,13 @@ export default class ProductTable extends React.Component {
     }
 }
 
-let mapStateToProps = (state) => {
+/*let mapStateToProps = (state) => {
     return {
         initialProductList: state.products.initialProductList,
         filteredProductList: state.products.filteredProductList
     };
 }
 
-ProductTable = connect(mapStateToProps)(ProductTable);
+ProductTable = connect(mapStateToProps)(ProductTable);*/
 
 export default ProductTable;

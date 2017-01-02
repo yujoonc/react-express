@@ -21,9 +21,9 @@ class SearchBar extends React.Component {
                 <input
                     type="text"
                     placeholder="Search..."
-                    value={this.props.searchText}
+                    value={this.props.filterText}
                     ref={(input) => this.filterTextInput = input}
-                    onChange={ this.props.onFilter }
+                    onChange={this.handleChange}
                 />
                 <p>
                     <input
@@ -40,7 +40,7 @@ class SearchBar extends React.Component {
     }
 }
 
-let mapStateToProps = (state) => {
+/*let mapStateToProps = (state) => {
     return {
         searchText: state.search.searchText
     };
@@ -52,6 +52,6 @@ let mapDispatchToProps = (dispatch) => {
     }
 };
 
-SearchBar = connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+SearchBar = connect(mapStateToProps, mapDispatchToProps)(SearchBar);*/
 
 export default SearchBar;

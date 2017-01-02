@@ -30,7 +30,7 @@ class FilterableProductTable extends React.Component {
                     onUserInput={this.handleUserInput}
                 />
                 <ProductTable
-                    products={this.props.store.getState().products}
+                    products={this.props.products}
                     filterText={this.state.filterText}
                     inStockOnly={this.state.inStockOnly}
                 />
