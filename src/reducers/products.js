@@ -1,7 +1,6 @@
-import React from 'react';
-import FilterableProductTable from './components/FilterableProductTable';
+import { FILTER } from '../actions';
 
-var PRODUCTS = [
+const initialProducts = [
     {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
     {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
     {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball'},
@@ -10,12 +9,20 @@ var PRODUCTS = [
     {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'}
 ];
 
-class App extends React.Component {
-    render(){
-        return (
-            <FilterableProductTable products={PRODUCTS} />
-        );
-    }
-}
+var productsInitialState = {
+    initialProductList: initialProducts,
+    filteredProductList: initialProducts
+};
 
-export default App;
+const products = (state = productsInitialState, action) => {
+    switch(action.type) {
+        case FILTER:
+            return Object.assign({}, state, {
+                filteredProductList: initialProducts
+            });
+        default:
+            return state;
+    }
+};
+
+export default products;
